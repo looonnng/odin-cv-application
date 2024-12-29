@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as Styles from './styles/PersonalInfo.module.css';
+import * as Styles from './styles/Content.module.css';
 
 import Modal from './Modal';
 import ModalContent from './ModalContent';
@@ -30,16 +30,26 @@ export default function TechnicalSkills() {
 
   return (
     <section>
-      <button onClick={() => setModal(true)}>Edit</button>
-      <div className={Styles.wrapper}>
-        <h1>Technical Skills</h1>
-        <ul className={Styles.list}>
-          <li>Languages: {skills.languages}</li>
-          <li>Frameworks: {skills.frameworks}</li>
-          <li>Databases: {skills.databases}</li>
-          <li>DevTools: {skills.devtools}</li>
-        </ul>
+      <div className={`${Styles.flex} ${Styles.titleWrapper}`}>
+        <h1 className={Styles.title}>Technical Skills</h1>
+        <button onClick={() => setModal(true)}>Edit</button>
       </div>
+      <ul className={Styles.list}>
+        <li>
+          <b>Languages: </b>
+          {skills.languages}
+        </li>
+        <li>
+          <b>Frameworks:</b> {skills.frameworks}
+        </li>
+        <li>
+          <b>Databases: </b>
+          {skills.databases}
+        </li>
+        <li>
+          <b>DevTools:</b> {skills.devtools}
+        </li>
+      </ul>
       <Modal openModal={modal} closeModal={closeFormModal}>
         <ModalContent onSaveForm={handleSaveForm} closeModal={closeFormModal}>
           <TechnicalSkillsFormContent skills={skills} />

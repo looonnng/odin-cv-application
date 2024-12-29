@@ -3,6 +3,8 @@ import Modal from './Modal';
 import ModalContent from './ModalContent';
 import ProjectFormContent from './ProjectFormContent';
 import Project from './Project';
+import * as Styles from './styles/Content.module.css';
+
 
 export default function ProjectWrapper() {
   const initialProject = {
@@ -32,9 +34,11 @@ export default function ProjectWrapper() {
   }
 
   return (
-    <div>
-      <h1>Project</h1>
-      <button onClick={() => setModal(true)}>Add new</button>
+    <section>
+      <div className={`${Styles.flex} ${Styles.titleWrapper}`}>
+        <h1 className={Styles.title}>Project</h1>
+        <button onClick={() => setModal(true)}>Add new</button>
+      </div>
       {projects.map((project, i) => (
         <Project key={i} newProject={project}></Project>
       ))}
@@ -43,6 +47,6 @@ export default function ProjectWrapper() {
           <ProjectFormContent project={initialProject} />
         </ModalContent>
       </Modal>
-    </div>
+    </section>
   );
 }

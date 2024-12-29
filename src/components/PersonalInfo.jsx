@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as Styles from './styles/PersonalInfo.module.css';
+import * as Styles from './styles/Content.module.css';
 import Modal from './Modal';
 import ModalContent from './ModalContent';
 import PersonFormContent from './PersonFormContent';
@@ -31,18 +31,22 @@ export default function PersonalInfo() {
 
   return (
     <section>
-      <button onClick={() => setModal(true)}>Edit</button>
-      <div className={Styles.wrapper}>
-        <h1>
-          {person.firstName} {person.lastName}
-        </h1>
-        <ul className={Styles.list}>
-          <li>{person.email}</li>
-          <li>{person.phoneNumber}</li>
-          <li>{person.githubLink}</li>
-          <li>{person.linkedinLink}</li>
-        </ul>
+      <div className={Styles.flex}>
+        <button className={Styles.edit} onClick={() => setModal(true)}>
+          Edit
+        </button>
       </div>
+
+      <h1 className={Styles.textCenter}>
+        {person.firstName} {person.lastName}
+      </h1>
+      <ul className={`${Styles.flex} ${Styles.personal}`}>
+        <li>{person.email}</li>
+        <li>{person.phoneNumber}</li>
+        <li>{person.githubLink}</li>
+        <li>{person.linkedinLink}</li>
+      </ul>
+
       <Modal openModal={modal} closeModal={closeFormModal}>
         <ModalContent closeModal={closeFormModal} onSaveForm={handleSaveForm}>
           <PersonFormContent person={person}></PersonFormContent>
