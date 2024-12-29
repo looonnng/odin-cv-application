@@ -1,0 +1,58 @@
+.textCenter {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.titleWrapper {
+  border-bottom: 4px solid white;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.item {
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+}
+
+.personal {
+  list-style: none;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.personalWrapper {
+  text-align: center;
+}
+
+.description {
+  padding-left: 2rem;
+
+  & ul {
+    list-style-type: diamonds;
+  }
+}
+
+@counter-style diamonds {
+  system: cyclic;
+  symbols: '⬥';
+  suffix: ' ';
+}
+
+.edit {
+  margin-left: auto;
+}
