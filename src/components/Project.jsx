@@ -4,7 +4,7 @@ import Modal from './Modal';
 import ModalContent from './ModalContent';
 import ProjectFormContent from './ProjectFormContent';
 
-export default function Project({ newProject }) {
+export default function Project({ newProject, handleRemove, id }) {
   const [modal, setModal] = useState(false);
   const [project, setProject] = useState(newProject);
 
@@ -27,9 +27,18 @@ export default function Project({ newProject }) {
     <div>
       <ul className={Styles.list}>
         <li className={`${Styles.flex}`}>
-          <button className={Styles.edit} onClick={() => setModal(true)}>
-            Edit
-          </button>
+          <div className={Styles.btnWrapper}>
+            <button className={Styles.edit} onClick={() => setModal(true)}>
+              Edit
+            </button>
+            <button
+              key={id}
+              className={Styles.edit}
+              onClick={() => handleRemove(id)}
+            >
+              Remove
+            </button>
+          </div>
         </li>
         <li>
           {' '}

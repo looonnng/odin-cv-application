@@ -5,7 +5,6 @@ import ProjectFormContent from './ProjectFormContent';
 import Project from './Project';
 import * as Styles from './styles/Content.module.css';
 
-
 export default function ProjectWrapper() {
   const initialProject = {
     title: 'lorem',
@@ -33,14 +32,23 @@ export default function ProjectWrapper() {
     closeFormModal();
   }
 
+  function handleRemove(key) {
+    setProjects(projects.filter((project) => project.title !== key));
+  }
+
   return (
     <section>
       <div className={`${Styles.flex} ${Styles.titleWrapper}`}>
         <h1 className={Styles.title}>Project</h1>
         <button onClick={() => setModal(true)}>Add new</button>
       </div>
-      {projects.map((project, i) => (
-        <Project key={i} newProject={project}></Project>
+      {projects.map((project) => (
+        <Project
+          handleRemove={handleRemove}
+          key={project.title}
+          id={project.title}
+          newProject={project}
+        ></Project>
       ))}
       <Modal openModal={modal} closeModal={closeFormModal}>
         <ModalContent onSaveForm={handleSaveForm} closeModal={closeFormModal}>
