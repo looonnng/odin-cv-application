@@ -10,6 +10,14 @@
   flex-direction: column;
 }
 
+.btnWrapper {
+  margin-left: auto;
+
+  & button + button {
+    margin-left: 1rem;
+  }
+}
+
 .titleWrapper {
   border-bottom: 4px solid white;
   justify-content: space-between;
