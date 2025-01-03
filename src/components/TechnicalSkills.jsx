@@ -13,6 +13,7 @@ export default function TechnicalSkills() {
     databases: 'Maxime repudiandae voluptatibus quidem, tenetur in',
     devtools: 'repellendus laborum nesciunt aspernatur! Aliquid, eos!',
   });
+  const [visible, setVisible] = useState({ visibility: 'hidden' });
 
   function closeFormModal() {
     setModal(false);
@@ -28,11 +29,19 @@ export default function TechnicalSkills() {
     closeFormModal();
   }
 
+
+  function handleMouseLeave() {
+    setVisible({ visibility: 'hidden' });
+  }
+  function handleMouseEnter() {
+    setVisible({ visibility: 'visible' });
+  }
+
   return (
-    <section>
+    <section onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={`${Styles.flex} ${Styles.titleWrapper}`}>
         <h1 className={Styles.title}>Technical Skills</h1>
-        <button onClick={() => setModal(true)}>Edit</button>
+        <button style={visible} onClick={() => setModal(true)}>Edit</button>
       </div>
       <ul className={Styles.list}>
         <li>

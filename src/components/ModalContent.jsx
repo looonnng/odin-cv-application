@@ -13,10 +13,12 @@ export default function ModalContent({ closeModal, onSaveForm, children }) {
         id={KEY}
         autoComplete="off"
         onSubmit={onSaveForm}
-        className={`${Styles.flex} ${Styles.content}`}
+        className={`${Styles.content}`}
       >
         {children}
-        <button>Save</button>
+        <div>
+          <button>Save</button>
+        </div>
       </form>
     </>
   );

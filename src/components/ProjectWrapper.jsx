@@ -36,11 +36,22 @@ export default function ProjectWrapper() {
     setProjects(projects.filter((project) => project.title !== key));
   }
 
+  function handleMouseLeave() {
+    setVisible({ visibility: 'hidden' });
+  }
+  function handleMouseEnter() {
+    setVisible({ visibility: 'visible' });
+  }
+
+  const [visible, setVisible] = useState({ visibility: 'hidden' });
+
   return (
-    <section>
+    <section onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={`${Styles.flex} ${Styles.titleWrapper}`}>
         <h1 className={Styles.title}>Project</h1>
-        <button onClick={() => setModal(true)}>Add new</button>
+        <button style={visible} onClick={() => setModal(true)}>
+          Add new
+        </button>
       </div>
       {projects.map((project) => (
         <Project

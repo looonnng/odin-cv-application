@@ -14,6 +14,7 @@ export default function PersonalInfo() {
     githubLink: 'example.com',
     linkedinLink: 'example.com',
   });
+  const [visible, setVisible] = useState({ visibility: 'hidden' });
 
   function closeFormModal() {
     setModal(false);
@@ -29,15 +30,26 @@ export default function PersonalInfo() {
     closeFormModal();
   }
 
+  function handleMouseLeave() {
+    setVisible({ visibility: 'hidden' });
+  }
+  function handleMouseEnter() {
+    setVisible({ visibility: 'visible' });
+  }
+
   return (
-    <section>
+    <section onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={Styles.flex}>
-        <button className={Styles.edit} onClick={() => setModal(true)}>
+        <button
+          style={visible}
+          className={Styles.edit}
+          onClick={() => setModal(true)}
+        >
           Edit
         </button>
       </div>
 
-      <h1 className={Styles.textCenter}>
+      <h1 className={`${Styles.textCenter} ${Styles.name}`}>
         {person.firstName} {person.lastName}
       </h1>
       <ul className={`${Styles.flex} ${Styles.personal}`}>

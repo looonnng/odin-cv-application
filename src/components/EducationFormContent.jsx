@@ -2,6 +2,20 @@ export default function EducationFormContent({ education }) {
   return (
     <>
       <EducationDropdown education={education} />
+      <label htmlFor="school">School</label>
+      <input
+        name="school"
+        id="school"
+        type="text"
+        defaultValue={education.school}
+      />
+      <label htmlFor="location">Location</label>
+      <input
+        name="location"
+        id="location"
+        type="text"
+        defaultValue={education.location}
+      />
       <label htmlFor="major">Major</label>
       <input
         name="major"
@@ -34,7 +48,7 @@ function EducationDropdown({ education }) {
     <fieldset>
       <legend>Education</legend>
       <select
-        defaultValue={education.degree}
+        defaultValue={"High School"}
         className="form-control dropdown"
         id="education"
         name="degree"

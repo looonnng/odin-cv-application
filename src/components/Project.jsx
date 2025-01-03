@@ -7,6 +7,7 @@ import ProjectFormContent from './ProjectFormContent';
 export default function Project({ newProject, handleRemove, id }) {
   const [modal, setModal] = useState(false);
   const [project, setProject] = useState(newProject);
+  const [visible, setVisible] = useState({ visibility: 'hidden' });
 
   function closeFormModal() {
     setModal(false);
@@ -23,15 +24,31 @@ export default function Project({ newProject, handleRemove, id }) {
     closeFormModal();
   }
 
+  function handleMouseLeave() {
+    setVisible({ visibility: 'hidden' });
+  }
+  function handleMouseEnter() {
+    setVisible({ visibility: 'visible' });
+  }
+
   return (
     <div>
-      <ul className={Styles.list}>
+      <ul
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={Styles.list}
+      >
         <li className={`${Styles.flex}`}>
           <div className={Styles.btnWrapper}>
-            <button className={Styles.edit} onClick={() => setModal(true)}>
+            <button
+              style={visible}
+              className={Styles.edit}
+              onClick={() => setModal(true)}
+            >
               Edit
             </button>
             <button
+              style={visible}
               key={id}
               className={Styles.edit}
               onClick={() => handleRemove(id)}

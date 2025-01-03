@@ -18,6 +18,7 @@ export default function Experience() {
       'libero facere similique explicabo, vel debitis. adipisicing elit. Voluptatem, sed.',
     ],
   });
+  const [visible, setVisible] = useState({ visibility: 'hidden' });
 
   function closeFormModal() {
     setModal(false);
@@ -33,12 +34,18 @@ export default function Experience() {
     setExperience({ ...formJson, description: descriptions });
     closeFormModal();
   }
+  function handleMouseLeave() {
+    setVisible({ visibility: 'hidden' });
+  }
+  function handleMouseEnter() {
+    setVisible({ visibility: 'visible' });
+  }
 
   return (
-    <section>
+    <section onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={`${Styles.flex} ${Styles.titleWrapper}`}>
         <h1 className={Styles.title}>Experience</h1>
-        <button onClick={() => setModal(true)}>Edit</button>
+        <button style={visible} onClick={() => setModal(true)}>Edit</button>
       </div>
       <ul className={Styles.list}>
         <li className={`${Styles.flex} ${Styles.item}`}>

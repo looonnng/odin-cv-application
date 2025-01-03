@@ -9,12 +9,13 @@ export default function Education() {
   const [education, setEducation] = useState({
     school: 'university college',
     location: 'lorem',
-    degree: 'lorem ipsum',
-    major: 'lorem ipsum',
+    degree: 'High School',
+    major: 'business',
     gpa: 0,
     startDate: 'lorem 2036',
     graduationDate: 'lorem 2040',
   });
+  const [visible, setVisible] = useState({ visibility: 'hidden' });
 
   function closeFormModal() {
     setModal(false);
@@ -30,11 +31,20 @@ export default function Education() {
     closeFormModal();
   }
 
+  function handleMouseLeave() {
+    setVisible({ visibility: 'hidden' });
+  }
+  function handleMouseEnter() {
+    setVisible({ visibility: 'visible' });
+  }
+
   return (
-    <section>
+    <section onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={`${Styles.flex} ${Styles.titleWrapper}`}>
         <h1 className={Styles.title}>Education</h1>
-        <button onClick={() => setModal(true)}>Edit</button>
+        <button style={visible} onClick={() => setModal(true)}>
+          Edit
+        </button>
       </div>
       <ul className={Styles.list}>
         <li className={`${Styles.flex} ${Styles.item}`}>
